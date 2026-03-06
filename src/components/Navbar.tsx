@@ -1,30 +1,31 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { NAV_LINKS } from "@/lib/constants";
 
 const sectionIds = NAV_LINKS.map((l) => l.href.replace("#", ""));
 
 export function Navbar() {
-	const { activeId, scrolled } = useScrollSpy(sectionIds);
+	const navRef = useRef<HTMLElement>(null);
+	const { activeId, navBackground, logoVisible } = useScrollSpy(sectionIds, navRef);
 	const [menuOpen, setMenuOpen] = useState(false);
 
 	return (
 		<nav
+			ref={navRef}
 			className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
-				scrolled ? "bg-white/90 shadow-md backdrop-blur-md" : "bg-transparent"
+				navBackground ? "bg-white/90 shadow-md backdrop-blur-md" : "bg-transparent"
 			}`}
 		>
 			<div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-				<a href={NAV_LINKS[0].href} className="flex items-center">
+				<a
+					href={NAV_LINKS[0].href}
+					className={`flex items-center transition-all duration-500 ${logoVisible ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-4 opacity-0"}`}
+				>
 					<Image
-						src={
-							scrolled
-								? "/images/logo-black-for-white-background.svg"
-								: "/images/logo-white-for-black-background.svg"
-						}
+						src="/images/logo-for-white-background.svg"
 						alt="Eva Biezunski - Avocate"
 						width={180}
 						height={40}
@@ -40,10 +41,10 @@ export function Navbar() {
 							href={link.href}
 							className={`text-sm font-500 transition-colors ${
 								activeId === link.href.replace("#", "")
-									? scrolled
+									? navBackground
 										? "text-primary"
 										: "text-white"
-									: scrolled
+									: navBackground
 										? "text-near-black/70 hover:text-primary"
 										: "text-white/70 hover:text-white"
 							}`}
@@ -61,7 +62,7 @@ export function Navbar() {
 					aria-label="Menu"
 				>
 					<svg
-						className={`h-6 w-6 ${scrolled ? "text-near-black" : "text-white"}`}
+						className={`h-6 w-6 ${navBackground ? "text-near-black" : "text-white"}`}
 						fill="none"
 						viewBox="0 0 24 24"
 						stroke="currentColor"

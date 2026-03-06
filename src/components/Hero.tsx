@@ -9,7 +9,8 @@ export function Hero() {
 		>
 			<div className="mx-auto flex max-w-4xl flex-col items-center px-6 text-center">
 				<Image
-					src="/images/logo-white-for-black-background.svg"
+					id="hero-logo"
+					src="/images/logo-for-dark-green-background.svg"
 					alt="Eva Biezunski - Avocate"
 					width={300}
 					height={80}

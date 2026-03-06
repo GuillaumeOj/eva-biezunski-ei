@@ -2,29 +2,53 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export function useScrollSpy(sectionIds: string[], offset = 100) {
-	const [activeId, setActiveId] = useState<string>("");
-	const [scrolled, setScrolled] = useState(false);
+interface ScrollSpyState {
+	activeId: string;
+	navBackground: boolean;
+	logoVisible: boolean;
+}
+
+export function useScrollSpy(
+	sectionIds: string[],
+	navRef: React.RefObject<HTMLElement | null>,
+	offset = 100,
+) {
+	const [state, setState] = useState<ScrollSpyState>({
+		activeId: "",
+		navBackground: false,
+		logoVisible: false,
+	});
 	const rafId = useRef(0);
+	const heroLogoRef = useRef<HTMLElement | null>(null);
 
 	useEffect(() => {
+		heroLogoRef.current = document.getElementById("hero-logo");
+
 		const handleScroll = () => {
 			cancelAnimationFrame(rafId.current);
 			rafId.current = requestAnimationFrame(() => {
-				setScrolled(window.scrollY > 50);
-
+				let activeId = sectionIds[0] ?? "";
 				for (let i = sectionIds.length - 1; i >= 0; i--) {
 					const id = sectionIds[i]!;
 					const el = document.getElementById(id);
-					if (el) {
-						const rect = el.getBoundingClientRect();
-						if (rect.top <= offset) {
-							setActiveId(id);
-							return;
-						}
+					if (el && el.getBoundingClientRect().top <= offset) {
+						activeId = id;
+						break;
 					}
 				}
-				setActiveId(sectionIds[0] ?? "");
+
+				let navBackground = false;
+				let logoVisible = false;
+				const heroLogo = heroLogoRef.current;
+				const nav = navRef.current;
+				if (heroLogo && nav) {
+					const heroLogoRect = heroLogo.getBoundingClientRect();
+					const navBottom = nav.getBoundingClientRect().bottom;
+					navBackground = heroLogoRect.top <= navBottom;
+					logoVisible = heroLogoRect.top + heroLogoRect.height * 0.25 <= navBottom;
+				}
+
+				setState({ activeId, navBackground, logoVisible });
 			});
 		};
 
@@ -34,7 +58,7 @@ export function useScrollSpy(sectionIds: string[], offset = 100) {
 			window.removeEventListener("scroll", handleScroll);
 			cancelAnimationFrame(rafId.current);
 		};
-	}, [sectionIds, offset]);
+	}, [sectionIds, navRef, offset]);
 
-	return { activeId, scrolled };
+	return state;
 }
