@@ -3,6 +3,7 @@
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { ABOUT } from "@/lib/constants";
+import Image from "next/image";
 
 export function About() {
 	const { ref, isVisible } = useIntersectionObserver(0.1);
@@ -20,10 +21,16 @@ export function About() {
 						transition: "opacity 0.8s ease, transform 0.8s ease",
 					}}
 				>
-					{/* Photo placeholder */}
 					<div className="flex items-center justify-center">
-						<div className="flex aspect-[3/4] w-full max-w-sm items-center justify-center rounded-lg border-4 border-primary-light/20 bg-gradient-to-br from-primary/5 to-primary-light/10">
-							<span className="text-sm font-300 text-primary/40">Photo de Me Biezunski</span>
+						<div className="relative aspect-[3/4] w-full max-w-sm overflow-hidden rounded-lg">
+							<Image
+								src="/images/portrait.jpeg"
+								alt="Me Eva Biezunski"
+								fill
+								className="object-cover"
+								sizes="(max-width: 768px) 100vw, 384px"
+								priority
+							/>
 						</div>
 					</div>
 
