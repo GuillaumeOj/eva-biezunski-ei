@@ -30,10 +30,10 @@ export function Contact() {
 					<div>
 						<h3 className="mb-6 text-xl font-700 text-near-black">Coordonnées</h3>
 						<div className="space-y-4">
-							{contactItems.map((item) => (
-								<div key={item.text} className="flex items-start gap-3">
-									<item.Icon className="mt-1 h-5 w-5 shrink-0 text-primary-light" />
-									<p className="text-sm font-300 text-gray-700">{item.text}</p>
+							{contactItems.map(({ Icon, text }) => (
+								<div key={text} className="flex items-start gap-3">
+									<Icon className="mt-1 h-5 w-5 shrink-0 text-primary-light" />
+									<p className="text-sm font-300 text-gray-700">{text}</p>
 								</div>
 							))}
 						</div>

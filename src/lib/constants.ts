@@ -33,31 +33,37 @@ export const SERVICES = {
 	sectionTitle: "Domaines d'intervention",
 	items: [
 		{
+			icon: "building",
 			title: "Création de sociétés",
 			description:
 				"Accompagnement dans la création de structures d'exercice : SEL, SELARL, SELAS, SCM, SCI. Rédaction des statuts et formalités.",
 		},
 		{
+			icon: "handshake",
 			title: "Cession de patientèle",
 			description:
 				"Conseil et rédaction des actes de cession de patientèle, négociation des conditions et sécurisation juridique de la transaction.",
 		},
 		{
+			icon: "document",
 			title: "Contrats professionnels",
 			description:
 				"Rédaction et négociation de contrats d'exercice, de collaboration, de remplacement, baux professionnels et conventions entre praticiens.",
 		},
 		{
+			icon: "bulb",
 			title: "Conseil juridique",
 			description:
 				"Conseil permanent en droit des affaires, droit des sociétés et droit médical. Accompagnement dans les décisions stratégiques.",
 		},
 		{
+			icon: "scale",
 			title: "Contentieux",
 			description:
 				"Représentation et défense devant les juridictions compétentes. Gestion des litiges commerciaux et professionnels.",
 		},
 		{
+			icon: "shield",
 			title: "Mise en conformité",
 			description:
 				"Audit juridique et mise en conformité réglementaire. RGPD, obligations professionnelles et normes sectorielles.",
