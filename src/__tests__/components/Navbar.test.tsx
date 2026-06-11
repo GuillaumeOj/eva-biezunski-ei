@@ -1,11 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import { Navbar } from "@/components/Navbar";
 import { NAV_LINKS } from "@/lib/constants";
-
-vi.mock("next/image", () => ({
-	default: (props: Record<string, unknown>) => <img {...props} />,
-}));
 
 describe("Navbar", () => {
 	it("renders all navigation links", () => {

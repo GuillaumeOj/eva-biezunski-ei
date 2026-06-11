@@ -1,11 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 import { Hero } from "@/components/Hero";
 import { HERO } from "@/lib/constants";
-
-vi.mock("next/image", () => ({
-	default: (props: Record<string, unknown>) => <img {...props} />,
-}));
 
 describe("Hero", () => {
 	it("renders the heading", () => {
