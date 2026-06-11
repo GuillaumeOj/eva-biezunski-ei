@@ -48,8 +48,10 @@ export function Footer() {
 						<ul className="space-y-2 text-sm text-white/60">
 							{contactItems.map(({ Icon, text }) => (
 								<li key={text} className="flex items-start gap-2 font-300">
-									<Icon className="mt-0.5 h-4 w-4 shrink-0 text-primary-light" />
-									<span>{text}</span>
+									<span className="flex h-5 shrink-0 items-center">
+										<Icon className="h-4 w-4 text-primary-light" />
+									</span>
+									<span className="leading-5">{text}</span>
 								</li>
 							))}
 						</ul>

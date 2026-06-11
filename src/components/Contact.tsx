@@ -32,8 +32,10 @@ export function Contact() {
 						<div className="space-y-4">
 							{contactItems.map(({ Icon, text }) => (
 								<div key={text} className="flex items-start gap-3">
-									<Icon className="mt-1 h-5 w-5 shrink-0 text-primary-light" />
-									<p className="text-sm font-300 text-gray-700">{text}</p>
+									<span className="flex h-5 shrink-0 items-center">
+										<Icon className="h-5 w-5 text-primary-light" />
+									</span>
+									<p className="text-sm font-300 leading-5 text-gray-700">{text}</p>
 								</div>
 							))}
 						</div>
