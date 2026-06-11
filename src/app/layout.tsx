@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SITE } from "@/lib/constants";
+import { CONTACT, SITE } from "@/lib/constants";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -26,10 +26,10 @@ const jsonLd = {
 	url: SITE.url,
 	address: {
 		"@type": "PostalAddress",
-		streetAddress: "29 rue du Président Édouard Herriot",
-		addressLocality: "Lyon",
-		postalCode: "69002",
-		addressCountry: "FR",
+		streetAddress: CONTACT.addressParts.street,
+		addressLocality: CONTACT.addressParts.city,
+		postalCode: CONTACT.addressParts.postalCode,
+		addressCountry: CONTACT.addressParts.countryCode,
 	},
 	knowsAbout: ["Droit des affaires", "Droit des sociétés", "Professionnels de santé libéraux"],
 };

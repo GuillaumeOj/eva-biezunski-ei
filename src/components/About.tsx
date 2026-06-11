@@ -1,9 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { ABOUT } from "@/lib/constants";
-import Image from "next/image";
 
 export function About() {
 	const { ref, isVisible } = useIntersectionObserver(0.1);
