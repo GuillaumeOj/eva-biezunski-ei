@@ -56,14 +56,13 @@ export default async function CartePage() {
 
 				<div className="mt-12 flex w-full flex-col gap-4">
 					{isFirefox ? (
-						<button
-							type="button"
-							disabled
-							className="inline-flex cursor-not-allowed items-center justify-center gap-2 rounded bg-primary-light/40 px-8 py-4 font-500 text-white/50"
+						<div
+							aria-disabled="true"
+							className="inline-flex cursor-not-allowed items-center justify-center gap-2 rounded bg-white/10 px-8 py-4 font-500 text-white/40"
 						>
 							<UserPlus className="h-5 w-5" strokeWidth={1.5} />
 							{QR_CARD.saveContact}
-						</button>
+						</div>
 					) : (
 						<a
 							href="/carte/vcard"
