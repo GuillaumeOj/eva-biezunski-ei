@@ -1,5 +1,12 @@
+import { Mail, MapPin, Phone } from "lucide-react";
 import Image from "next/image";
 import { CONTACT, FOOTER, NAV_LINKS } from "@/lib/constants";
+
+const contactItems = [
+	{ Icon: MapPin, text: CONTACT.address },
+	{ Icon: Phone, text: CONTACT.phone },
+	{ Icon: Mail, text: CONTACT.email },
+];
 
 export function Footer() {
 	return (
@@ -39,9 +46,12 @@ export function Footer() {
 					<div>
 						<h4 className="mb-4 text-sm font-700">Contact</h4>
 						<ul className="space-y-2 text-sm text-white/60">
-							<li className="font-300">{CONTACT.address}</li>
-							<li className="font-300">{CONTACT.phone}</li>
-							<li className="font-300">{CONTACT.email}</li>
+							{contactItems.map(({ Icon, text }) => (
+								<li key={text} className="flex items-start gap-2 font-300">
+									<Icon className="mt-0.5 h-4 w-4 shrink-0 text-primary-light" />
+									<span>{text}</span>
+								</li>
+							))}
 						</ul>
 					</div>
 				</div>
