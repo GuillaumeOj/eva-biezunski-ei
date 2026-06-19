@@ -117,6 +117,19 @@ export const CONTACT = {
 		message: "Message",
 		submit: "Envoyer",
 	},
+	formMessages: {
+		sending: "Envoi en cours…",
+		success: "Merci, votre message a bien été envoyé. Eva vous répondra rapidement.",
+		error: "Une erreur est survenue. Veuillez réessayer ou nous contacter par téléphone.",
+	},
+	formErrors: {
+		lastNameRequired: "Le nom est requis.",
+		firstNameRequired: "Le prénom est requis.",
+		emailRequired: "L'email est requis.",
+		emailInvalid: "L'email est invalide.",
+		messageRequired: "Le message est requis.",
+		customSubjectRequired: "Veuillez préciser l'objet.",
+	},
 	subjectOptions: [
 		"Création de société",
 		"Clientèle / Patientèle",

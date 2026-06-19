@@ -10,11 +10,31 @@ const labelClass = "mb-1 block text-sm font-500 text-near-black";
 const inputClass =
 	"w-full rounded border border-gray-300 px-4 py-2 font-300 text-sm text-near-black focus:border-primary-light focus:ring-2 focus:ring-primary-light/20 focus:outline-none transition-colors";
 
+type Status = "idle" | "submitting" | "success" | "error";
+
 export function Contact() {
 	const [subject, setSubject] = useState("");
+	const [status, setStatus] = useState<Status>("idle");
 
-	const handleSubmit = (e: FormEvent) => {
+	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		const form = e.currentTarget;
+		const payload = Object.fromEntries(new FormData(form).entries());
+
+		setStatus("submitting");
+		try {
+			const res = await fetch("/api/contact", {
+				method: "POST",
+				headers: { "content-type": "application/json" },
+				body: JSON.stringify(payload),
+			});
+			if (!res.ok) throw new Error("Request failed");
+			form.reset();
+			setSubject("");
+			setStatus("success");
+		} catch {
+			setStatus("error");
+		}
 	};
 
 	return (
@@ -55,13 +75,19 @@ export function Contact() {
 								<label htmlFor="lastName" className={labelClass}>
 									{CONTACT.formFields.lastName}
 								</label>
-								<input id="lastName" type="text" className={inputClass} />
+								<input id="lastName" name="lastName" type="text" required className={inputClass} />
 							</div>
 							<div>
 								<label htmlFor="firstName" className={labelClass}>
 									{CONTACT.formFields.firstName}
 								</label>
-								<input id="firstName" type="text" className={inputClass} />
+								<input
+									id="firstName"
+									name="firstName"
+									type="text"
+									required
+									className={inputClass}
+								/>
 							</div>
 						</div>
 						<div className="grid gap-4 sm:grid-cols-2">
@@ -69,13 +95,13 @@ export function Contact() {
 								<label htmlFor="email" className={labelClass}>
 									{CONTACT.formFields.email}
 								</label>
-								<input id="email" type="email" className={inputClass} />
+								<input id="email" name="email" type="email" required className={inputClass} />
 							</div>
 							<div>
 								<label htmlFor="phone" className={labelClass}>
 									{CONTACT.formFields.phone}
 								</label>
-								<input id="phone" type="tel" className={inputClass} />
+								<input id="phone" name="phone" type="tel" className={inputClass} />
 							</div>
 						</div>
 						<div>
@@ -109,9 +135,21 @@ export function Contact() {
 							<label htmlFor="message" className={labelClass}>
 								{CONTACT.formFields.message}
 							</label>
-							<textarea id="message" rows={5} className={inputClass} />
+							<textarea id="message" name="message" rows={5} required className={inputClass} />
 						</div>
-						<Button type="submit">{CONTACT.formFields.submit}</Button>
+						<Button type="submit" disabled={status === "submitting"}>
+							{status === "submitting" ? CONTACT.formMessages.sending : CONTACT.formFields.submit}
+						</Button>
+						{status === "success" && (
+							<p role="status" className="text-sm font-300 text-primary-light">
+								{CONTACT.formMessages.success}
+							</p>
+						)}
+						{status === "error" && (
+							<p role="alert" className="text-sm font-300 text-red-600">
+								{CONTACT.formMessages.error}
+							</p>
+						)}
 					</form>
 				</div>
 			</div>
