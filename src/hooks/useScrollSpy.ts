@@ -11,6 +11,7 @@ interface ScrollSpyState {
 export function useScrollSpy(
 	sectionIds: string[],
 	navRef: React.RefObject<HTMLElement | null>,
+	enabled = true,
 	offset = 100,
 ) {
 	const [state, setState] = useState<ScrollSpyState>({
@@ -22,6 +23,7 @@ export function useScrollSpy(
 	const heroLogoRef = useRef<HTMLElement | null>(null);
 
 	useEffect(() => {
+		if (!enabled) return;
 		heroLogoRef.current = document.getElementById("hero-logo");
 
 		const handleScroll = () => {
@@ -61,7 +63,7 @@ export function useScrollSpy(
 			window.removeEventListener("scroll", handleScroll);
 			cancelAnimationFrame(rafId.current);
 		};
-	}, [sectionIds, navRef, offset]);
+	}, [sectionIds, navRef, enabled, offset]);
 
 	return state;
 }
