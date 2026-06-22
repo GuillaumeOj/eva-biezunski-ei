@@ -14,7 +14,7 @@ const icons = {
 
 export function Services() {
 	return (
-		<section id="services" className="bg-primary-light/5 py-20">
+		<section id="domaines-intervention" className="bg-primary-light/5 py-20">
 			<div className="mx-auto max-w-6xl px-6">
 				<SectionHeading>{SERVICES.sectionTitle}</SectionHeading>
 				<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -15,7 +15,7 @@ export const OTHER_SUBJECT = "Autre";
 export const NAV_LINKS = [
 	{ label: "Accueil", href: "#accueil" },
 	{ label: "À propos", href: "#a-propos" },
-	{ label: "Domaines d'intervention", href: "#services" },
+	{ label: "Domaines d'intervention", href: "#domaines-intervention" },
 	{ label: "Témoignages", href: "#temoignages" },
 	{ label: "Contact", href: "#contact" },
 ] as const;
