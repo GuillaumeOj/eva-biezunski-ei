@@ -16,7 +16,7 @@ export const NAV_LINKS = [
 	{ label: "Accueil", href: "#accueil" },
 	{ label: "À propos", href: "#a-propos" },
 	{ label: "Domaines d'intervention", href: "#domaines-intervention" },
-	{ label: "Témoignages", href: "#temoignages" },
+	{ label: "Votre avis", href: "#avis" },
 	{ label: "Contact", href: "#contact" },
 ] as const;
 
@@ -77,20 +77,9 @@ export const SERVICES = {
 	],
 } as const;
 
-export const TESTIMONIALS = {
-	sectionTitle: "Témoignages",
-	items: [
-		{
-			quote:
-				"Maître Biezunski, une femme d'exception, parfaitement disponible et efficace, m'a accompagnée à quitter mon cabinet infirmier. Son professionnalisme et sa réactivité m'ont permis de vivre cette période sereinement. Ses explications et ses conseils étaient pertinents. Je recommande vivement.",
-			author: "N.F.",
-		},
-		{
-			quote:
-				"Je suis très satisfait de l'accompagnement de Me Biezunski pour la création de ma société et de mon statut d'auto-entrepreneur, et la mise en relation avec d'autres professionnels compétents (avocat en droit de la propriété intellectuelle, expert-comptable). Grâce à elle, je me sens sécurisé pour le lancement de mon activité.",
-			author: "G.O.",
-		},
-	],
+export const REVIEW_CTA = {
+	title: "Votre avis compte",
+	subtitle: "Vous avez fait appel au Cabinet ? Partagez votre expérience sur Google.",
 } as const;
 
 const ADDRESS = {
