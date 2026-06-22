@@ -1,7 +1,6 @@
-import { Star } from "lucide-react";
 import Image from "next/image";
 import { contactItems } from "@/components/contactItems";
-import { FOOTER, NAV_LINKS, REVIEW_URL } from "@/lib/constants";
+import { FOOTER, NAV_LINKS } from "@/lib/constants";
 
 export function Footer() {
 	return (
@@ -60,19 +59,6 @@ export function Footer() {
 									)}
 								</li>
 							))}
-							<li className="flex items-start gap-2 font-300">
-								<span className="flex h-5 shrink-0 items-center">
-									<Star className="h-4 w-4 text-primary-light" />
-								</span>
-								<a
-									href={REVIEW_URL}
-									target="_blank"
-									rel="noopener noreferrer"
-									className="leading-5 transition-colors hover:text-white"
-								>
-									Laisser un avis
-								</a>
-							</li>
 						</ul>
 					</div>
 				</div>
