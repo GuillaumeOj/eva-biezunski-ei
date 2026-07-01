@@ -6,6 +6,13 @@ export const SITE = {
 	url: "https://biezunski-avocat.fr",
 } as const;
 
+// Brand teal, mirroring the Tailwind `@theme` vars in globals.css (which TS/JSON can't
+// import). Source of truth for the hero gradient, the PWA icons, and the theme-color meta.
+export const BRAND_COLORS = {
+	darkerTeal: "#162729", // --color-darker-teal
+	darkTeal: "#264445", // --color-dark-teal
+} as const;
+
 export const REVIEW_URL = "https://maps.app.goo.gl/qjynjiyhA1APuACL8";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/eva-biezunski-36a4b691/";
 

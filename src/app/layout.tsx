@@ -1,6 +1,10 @@
-import type { Metadata } from "next";
-import { CONTACT, LINKEDIN_URL, SITE } from "@/lib/constants";
+import type { Metadata, Viewport } from "next";
+import { BRAND_COLORS, CONTACT, LINKEDIN_URL, SITE } from "@/lib/constants";
 import "./globals.css";
+
+export const viewport: Viewport = {
+	themeColor: BRAND_COLORS.darkerTeal,
+};
 
 export const metadata: Metadata = {
 	metadataBase: new URL(SITE.url),
@@ -24,6 +28,12 @@ export const metadata: Metadata = {
 	creator: SITE.name,
 	icons: {
 		icon: "/images/favicon.svg",
+		apple: "/apple-icon.png",
+	},
+	appleWebApp: {
+		capable: true,
+		title: SITE.name,
+		statusBarStyle: "black-translucent",
 	},
 	alternates: {
 		canonical: "/",
